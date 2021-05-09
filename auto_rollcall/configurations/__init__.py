@@ -7,7 +7,15 @@ def load_dependecies(app: Flask):
     from auto_rollcall.utils import call_each_init_app_function
 
     ignore_no_config_files_regex = "^[^_].*[^_].py$"
-    call_each_init_app_function(app, ignore_no_config_files_regex)
+    path_to_config = "configurations"
+    priority_modules_to_config = ["database"]
+
+    call_each_init_app_function(
+        app,
+        path_to_config,
+        priority_modules_to_config,
+        ignore_no_config_files_regex,
+    )
 
 
 def init_app(app: Flask):
