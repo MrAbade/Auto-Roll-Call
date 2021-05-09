@@ -1,15 +1,16 @@
 from flask import Flask
 
 from auto_rollcall import configurations
-from auto_rollcall.configurations import database
-from auto_rollcall.configurations import migration
+
+
+def simple_app() -> Flask:
+    app_name = __name__.split(".")[0]
+    app = Flask(app_name)
+    configurations.init_app(app)
+    return app
 
 
 def create_app():
-    app = Flask(__name__)
-
-    configurations.init_app(app)
-    database.init_app(app)
-    migration.init_app(app)
-
+    app = simple_app()
+    configurations.load_dependecies(app)
     return app
