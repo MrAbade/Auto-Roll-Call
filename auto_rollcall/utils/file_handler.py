@@ -26,7 +26,7 @@ def get_each_module_importation(
     return (import_module(module) for module in module_import_name_list)
 
 
-def put_database_as_first_module(
+def orgainze_priority_on_sequence(
     module_import_name_list: Iterable[str],
     priority_module_list: List[str],
 ) -> List[str]:
@@ -51,7 +51,7 @@ def call_each_init_app_function(
         file_pattern_regex,
     )
     if priority_module_list:
-        normalized_module_list = put_database_as_first_module(
+        normalized_module_list = orgainze_priority_on_sequence(
             module_list,
             priority_module_list,
         )
